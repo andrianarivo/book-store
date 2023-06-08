@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import styles from '../styles/Layout.module.css';
 
 export default function Layout() {
   const links = [
@@ -6,7 +7,7 @@ export default function Layout() {
     { path: 'categories', text: 'Categories' },
   ];
   return (
-    <div>
+    <div className={styles.root}>
       <nav>
         <ul>
           {links.map((link) => (
