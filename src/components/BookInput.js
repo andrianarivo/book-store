@@ -1,13 +1,16 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { v4 as uuid } from 'uuid';
+import { addBook } from '../redux/books/booksSlice';
 
-export default function BookInput(props) {
+export default function BookInput() {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-  const { onSubmit } = props;
+
   const addNewBook = (e) => {
     e.preventDefault();
     if (title !== '') {
-      onSubmit(title);
+      dispatch(addBook({ book: { id: uuid(), title } }));
       setTitle('');
     }
   };
@@ -26,7 +29,3 @@ export default function BookInput(props) {
     </>
   );
 }
-
-BookInput.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
