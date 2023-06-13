@@ -12,7 +12,13 @@ export default function BookList() {
       <h3>List of books:</h3>
       <ul>
         {bookItems.map((book) => (
-          <BookItem key={book.id} id={book.id} author={book.author} title={book.title} />
+          <BookItem
+            key={book.id}
+            id={book.id}
+            author={book.author}
+            category={book.category}
+            title={book.title}
+          />
         ))}
       </ul>
     </div>

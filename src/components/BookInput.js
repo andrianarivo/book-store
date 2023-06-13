@@ -6,13 +6,13 @@ import styles from '../styles/BookInput.module.css';
 
 export default function BookInput() {
   const dispatch = useDispatch();
-  const [book, setBook] = useState({ title: '', author: '' });
+  const [book, setBook] = useState({ title: '', author: '', category: '' });
 
   const addNewBook = (e) => {
     e.preventDefault();
     if (book.title !== '') {
       dispatch(addBook({ book: { id: uuid(), ...book } }));
-      setBook({ title: '', author: '' });
+      setBook({ title: '', author: '', category: '' });
     }
   };
 
@@ -35,6 +35,10 @@ export default function BookInput() {
         <label htmlFor="author">
           Author:
           <input type="text" value={book.author} name="author" onChange={handleChange} />
+        </label>
+        <label htmlFor="category">
+          Category:
+          <input type="text" value={book.category} name="category" onChange={handleChange} />
         </label>
         <button type="submit">Add</button>
       </form>
