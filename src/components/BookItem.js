@@ -4,7 +4,7 @@ import { removeBook } from '../redux/books/booksSlice';
 
 export default function BookItem(props) {
   const dispatch = useDispatch();
-  const { id, title } = props;
+  const { id, title, author } = props;
 
   const handleDelete = () => {
     dispatch(removeBook({ id }));
@@ -13,7 +13,14 @@ export default function BookItem(props) {
   return (
     <li>
       <div>
-        <p>{title}</p>
+        <p>
+          Title:
+          {title}
+        </p>
+        <p>
+          Author:
+          {author}
+        </p>
         <button type="button" onClick={handleDelete}>
           Delete
         </button>
@@ -25,4 +32,5 @@ export default function BookItem(props) {
 BookItem.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
 };

@@ -9,4 +9,6 @@ const store = configureStore({
   },
 });
 
+export const selectBooks = (store) => store.books;
+
 export default store;
