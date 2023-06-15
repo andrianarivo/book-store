@@ -1,0 +1,29 @@
+.nav {
+  height: 5.938rem;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.nav h2 {
+  font-family: "Montserrat", sans-serif;
+  color: #0290ff;
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+}
+
+.navItem {
+  list-style: none;
+  text-transform: uppercase;
+  font-size: 0.813rem;
+}
+
+.navItem a {
+  text-decoration: none;
+  color: #121212;
+}
