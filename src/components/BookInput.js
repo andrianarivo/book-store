@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import { addBook } from '../redux/books/booksSlice';
+import { postBook } from '../redux/books/booksSlice';
 import styles from '../styles/BookInput.module.css';
 
 export default function BookInput() {
@@ -11,7 +11,7 @@ export default function BookInput() {
   const addNewBook = (e) => {
     e.preventDefault();
     if (book.title !== '') {
-      dispatch(addBook({ book: { id: uuid(), ...book } }));
+      dispatch(postBook({ item_id: uuid(), ...book }));
       setBook({ title: '', author: '', category: '' });
     }
   };

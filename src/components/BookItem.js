@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/booksSlice';
+import { delBook } from '../redux/books/booksSlice';
 
 export default function BookItem(props) {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ export default function BookItem(props) {
   } = props;
 
   const handleDelete = () => {
-    dispatch(removeBook({ id }));
+    dispatch(delBook(id));
   };
 
   return (
@@ -36,7 +36,7 @@ export default function BookItem(props) {
 }
 
 BookItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
