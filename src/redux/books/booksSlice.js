@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { DEL_BOOK, GET_BOOKS, POST_BOOK } from '../api';
-import { bookChapters } from '../../dummies';
+import { getDummyChapter, getDummyProgress } from '../../dummies';
 
 const initialState = {
   bookItems: [],
@@ -62,12 +62,10 @@ const booksSlice = createSlice({
         const values = Object.values(action.payload).map((item) => item[0]);
         const books = [];
         for (let i = 0; i < values.length; i += 1) {
-          const randomChapter = bookChapters[Math.floor(Math.random() * bookChapters.length)];
-          const randomProgress = Math.floor(Math.random() * 101);
           books.push({
             id: ids[i],
-            currentChapter: randomChapter,
-            progress: randomProgress,
+            currentChapter: getDummyChapter(),
+            progress: getDummyProgress(),
             ...values[i],
           });
         }
@@ -91,7 +89,14 @@ const booksSlice = createSlice({
       }))
       .addCase(postBook.fulfilled, (state, action) => ({
         ...state,
-        bookItems: [...state.bookItems, action.payload],
+        bookItems: [
+          ...state.bookItems,
+          {
+            progress: getDummyProgress(),
+            currentChapter: getDummyChapter(),
+            ...action.payload,
+          },
+        ],
       }))
       .addCase(postBook.rejected, (state) => ({
         ...state,

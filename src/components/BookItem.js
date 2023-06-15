@@ -68,7 +68,15 @@ export default function BookItem(props) {
           <p className={styles.completed}>completed</p>
         </div>
       </div>
-      <div>{currentChapter}</div>
+      <div className={`${styles.chapterDetails} d-flex direction-column`}>
+        <div>
+          <p className={styles.currentChapter}>Current chapter</p>
+          <p className={styles.chapterText}>{currentChapter}</p>
+        </div>
+        <button type="button" className={`${styles.button} btn-filled`}>
+          update progress
+        </button>
+      </div>
     </li>
   );
 }
