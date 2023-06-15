@@ -30,7 +30,7 @@
 .navItem a {
   text-decoration: none;
   color: #121212;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .navItem a.active {
