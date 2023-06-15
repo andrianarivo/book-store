@@ -1,24 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { DEL_BOOK, GET_BOOKS, POST_BOOK } from '../api';
+import { bookChapters } from '../../dummies';
 
 const initialState = {
   bookItems: [],
-  getStatus: {
-    error: false,
-    errMsg: '',
-    loading: true,
-  },
-  delStatus: {
-    error: false,
-    errMsg: '',
-    loading: false,
-  },
-  postStatus: {
-    error: false,
-    errMsg: '',
-    loading: false,
-  },
+  error: false,
+  errMsg: '',
+  loading: true,
 };
 
 export const getBooks = createAsyncThunk('books/getBooks', async (thunkAPI) => {
@@ -64,95 +53,62 @@ const booksSlice = createSlice({
       // GET BOOKS
       .addCase(getBooks.pending, (state) => ({
         ...state,
-        getStatus: {
-          loading: true,
-          errMsg: '',
-          error: false,
-        },
+        loading: true,
+        errMsg: '',
+        error: false,
       }))
       .addCase(getBooks.fulfilled, (state, action) => {
         const ids = Object.keys(action.payload);
         const values = Object.values(action.payload).map((item) => item[0]);
         const books = [];
         for (let i = 0; i < values.length; i += 1) {
-          books.push({ id: ids[i], ...values[i] });
+          const randomChapter = bookChapters[Math.floor(Math.random() * bookChapters.length)];
+          books.push({
+            id: ids[i],
+            currentChapter: randomChapter,
+            ...values[i],
+          });
         }
         return {
           ...state,
           bookItems: books,
-          getStatus: {
-            loading: false,
-            errMsg: '',
-            error: false,
-          },
+          loading: false,
+          errMsg: '',
+          error: false,
         };
       })
       .addCase(getBooks.rejected, (state, action) => ({
         ...state,
-        getStatus: {
-          loading: false,
-          errMsg: action.payload,
-          error: true,
-        },
+        loading: false,
+        errMsg: action.payload,
+        error: true,
       }))
       // POST BOOK
       .addCase(postBook.pending, (state) => ({
         ...state,
-        postStatus: {
-          loading: true,
-          errMsg: '',
-          error: false,
-        },
       }))
       .addCase(postBook.fulfilled, (state, action) => ({
         ...state,
         bookItems: [...state.bookItems, action.payload],
-        postStatus: {
-          loading: false,
-          errMsg: '',
-          error: false,
-        },
       }))
-      .addCase(postBook.rejected, (state, action) => ({
+      .addCase(postBook.rejected, (state) => ({
         ...state,
-        postStatus: {
-          loading: false,
-          errMsg: action.payload,
-          error: true,
-        },
       }))
       // DEL BOOK
       .addCase(delBook.pending, (state) => ({
         ...state,
-        delStatus: {
-          loading: true,
-          errMsg: '',
-          error: false,
-        },
       }))
       .addCase(delBook.fulfilled, (state, action) => {
         const books = state.bookItems.filter((book) => book.id !== action.payload);
         return {
           ...state,
           bookItems: books,
-          delStatus: {
-            loading: false,
-            errMsg: '',
-            error: false,
-          },
         };
       })
-      .addCase(delBook.rejected, (state, action) => ({
+      .addCase(delBook.rejected, (state) => ({
         ...state,
-        delStatus: {
-          loading: false,
-          errMsg: action.payload,
-          error: true,
-        },
       }));
   },
 });
-
-export const { addBook, removeBook } = booksSlice.actions;
 
 export default booksSlice.reducer;

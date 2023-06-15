@@ -4,10 +4,11 @@ import BookItem from './BookItem';
 import BookInput from './BookInput';
 import { selectBooks } from '../redux/store';
 import { getBooks } from '../redux/books/booksSlice';
+import styles from '../styles/BookList.module.css';
 
 export default function BookList() {
   const {
-    bookItems, getStatus, postStatus, delStatus,
+    bookItems, loading, error, errMsg,
   } = useSelector(selectBooks);
   const dispatch = useDispatch();
 
@@ -15,32 +16,26 @@ export default function BookList() {
     dispatch(getBooks());
   }, [dispatch]);
 
-  if (getStatus.loading) {
+  if (loading) {
     return (
-      <div>
+      <div className={`${styles.info} container d-flex justify-center align-center`}>
         <h3>Loading...</h3>
       </div>
     );
   }
 
-  if (getStatus.error) {
+  if (error) {
     return (
-      <div>
+      <div className={`${styles.info} container d-flex justify-center align-center`}>
         <h3>An error occurred:</h3>
-        <pre>{getStatus.errMsg}</pre>
+        <pre>{errMsg}</pre>
       </div>
     );
   }
 
   return (
-    <div>
-      <BookInput />
-      <p>{postStatus.loading ? 'Posting...' : ''}</p>
-      <p>{delStatus.loading ? 'Deleting...' : ''}</p>
-      <pre>{postStatus.error ? postStatus.errMsg : ''}</pre>
-      <pre>{delStatus.error ? delStatus.errMsg : ''}</pre>
-      <h3>List of books:</h3>
-      <ul>
+    <div className="container">
+      <ul className={`${styles.bookList} d-flex direction-column`}>
         {bookItems.map((book) => (
           <BookItem
             key={book.id}
@@ -51,6 +46,8 @@ export default function BookList() {
           />
         ))}
       </ul>
+      <hr className={styles.separator} />
+      <BookInput />
     </div>
   );
 }

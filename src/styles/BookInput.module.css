@@ -1,5 +1,29 @@
+.container {
+  margin-bottom: 16.563rem;
+}
+
+.title {
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.25rem;
+  color: #888;
+  font-weight: bold;
+  margin-bottom: 1.188rem;
+}
+
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  gap: 2.125rem;
+}
+
+.titleInput {
+  flex: 2;
+}
+
+.categoryInput {
+  flex: 1;
+}
+
+.button {
+  width: 11.5rem;
+  padding: 0.801rem 1.188rem 0.886rem 1.375rem;
 }
