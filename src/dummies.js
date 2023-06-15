@@ -24,3 +24,7 @@ export const bookChapters = [
   'Chapter 8: The Final Showdown',
   'Chapter 9: Epilogue',
 ];
+
+export const getDummyChapter = () => bookChapters[Math.floor(Math.random() * bookChapters.length)];
+export const getDummyAuthor = () => bookAuthors[Math.floor(Math.random() * bookChapters.length)];
+export const getDummyProgress = () => Math.floor(Math.random() * 101);
