@@ -18,7 +18,7 @@ export default function BookList() {
 
   if (loading) {
     return (
-      <div className={`${styles.info} container d-flex justify-center align-center`}>
+      <div className={`${styles.info} container d-flex justify-center items-center`}>
         <h3>Loading...</h3>
       </div>
     );
@@ -26,7 +26,7 @@ export default function BookList() {
 
   if (error) {
     return (
-      <div className={`${styles.info} container d-flex justify-center align-center`}>
+      <div className={`${styles.info} container d-flex justify-center items-center`}>
         <h3>An error occurred:</h3>
         <pre>{errMsg}</pre>
       </div>
@@ -43,6 +43,8 @@ export default function BookList() {
             author={book.author}
             category={book.category}
             title={book.title}
+            progress={book.progress}
+            currentChapter={book.currentChapter}
           />
         ))}
       </ul>

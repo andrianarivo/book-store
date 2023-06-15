@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import { delBook } from '../redux/books/booksSlice';
 import styles from '../styles/BookItem.module.css';
+import 'react-circular-progressbar/dist/styles.css';
 
 export default function BookItem(props) {
   const dispatch = useDispatch();
   const {
-    id, title, author, category,
+    id, title, author, category, progress, currentChapter,
   } = props;
 
   const handleDelete = () => {
@@ -46,6 +48,27 @@ export default function BookItem(props) {
           </button>
         </div>
       </div>
+      <div className="d-flex items-center">
+        <div className={styles.progress}>
+          <CircularProgressbar
+            strokeWidth={5}
+            value={progress}
+            styles={buildStyles({
+              strokeLinecap: 'butt',
+              pathColor: '#379cf6',
+              trailColor: '#e8e8e8',
+            })}
+          />
+        </div>
+        <div className={styles.progressDetails}>
+          <p className={styles.progressText}>
+            {progress}
+            %
+          </p>
+          <p className={styles.completed}>completed</p>
+        </div>
+      </div>
+      <div>{currentChapter}</div>
     </li>
   );
 }
@@ -55,4 +78,6 @@ BookItem.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
+  progress: PropTypes.number.isRequired,
+  currentChapter: PropTypes.string.isRequired,
 };

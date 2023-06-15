@@ -63,9 +63,11 @@ const booksSlice = createSlice({
         const books = [];
         for (let i = 0; i < values.length; i += 1) {
           const randomChapter = bookChapters[Math.floor(Math.random() * bookChapters.length)];
+          const randomProgress = Math.floor(Math.random() * 101);
           books.push({
             id: ids[i],
             currentChapter: randomChapter,
+            progress: randomProgress,
             ...values[i],
           });
         }

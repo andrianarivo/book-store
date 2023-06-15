@@ -9,7 +9,7 @@ export default function NavBar() {
   return (
     <nav className={styles.nav}>
       <div className="container">
-        <div className={`${styles.navBar} d-flex align-center justify-start`}>
+        <div className={`${styles.navBar} d-flex items-center justify-start`}>
           <h2>Bookstore CMS</h2>
           <ul className={styles.menu}>
             {links.map((link) => (
