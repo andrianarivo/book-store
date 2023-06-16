@@ -1,0 +1,52 @@
+.nav {
+  height: 5.938rem;
+  background: #fff;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 0 1px 5px #0000000f;
+}
+
+.navBar {
+  height: 5.938rem;
+}
+
+.nav h2 {
+  color: #0290ff;
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  gap: 2.563rem;
+  margin-left: 2.938rem;
+}
+
+.navItem {
+  list-style: none;
+  text-transform: uppercase;
+  font-size: 0.813rem;
+}
+
+.navItem a {
+  text-decoration: none;
+  color: #121212;
+  opacity: 0.5;
+}
+
+.navItem a.active {
+  opacity: 1;
+}
+
+.user {
+  cursor: pointer;
+  width: 2.813rem;
+  height: 2.813rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  justify-self: flex-end;
+  margin-left: auto;
+}
+
+.icon {
+  color: #0290ff;
+}

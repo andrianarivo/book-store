@@ -1,5 +1,43 @@
+.container {
+  margin-bottom: 16.563rem;
+}
+
+.title {
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.25rem;
+  color: #888;
+  font-weight: bold;
+  margin-bottom: 1.188rem;
+}
+
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  gap: 2.125rem;
+}
+
+.titleInput {
+  flex: 2;
+  font-size: 1rem;
+}
+
+.selectContainer {
+  flex: 1;
+  position: relative;
+}
+
+.categorySelect {
+  cursor: pointer;
+  flex: 1;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  text-transform: capitalize;
+  appearance: none;
+}
+
+.caret {
+  position: absolute;
+  cursor: pointer;
+  right: 1rem;
+  top: 0.65rem;
+  color: #c7c7c7;
 }
