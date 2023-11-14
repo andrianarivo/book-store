@@ -61,7 +61,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://book-store-hwag.onrender.com/)
+- [Live Demo Link](https://melodic-sawine-0a91b0.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
